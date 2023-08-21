@@ -20,6 +20,7 @@ require("./routes/patient.route")(app);
 require("./routes/practice.route")(app);
 require("./routes/provider.route")(app);
 require("./routes/cpt.route")(app);
+require("./routes/icd.route")(app);
 
 app.listen(process.env.PORT, () => {
   console.log("server is running");

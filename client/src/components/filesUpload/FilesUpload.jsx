@@ -3,8 +3,8 @@ import { useState } from "react";
 const FilesUpload = ({ id = "pdf-input", maxFileSize }) => {
   const [pdfs, setPdfs] = useState([]);
   const [dragover, setDragover] = useState(false);
-  console.log("pdfs", pdfs)
-  console.log("dragover", dragover)
+  console.log("pdfs", pdfs);
+  console.log("dragover", dragover);
 
   const handleInputFileChange = async (e) => {
     if (!e.target.files) return;
@@ -65,28 +65,31 @@ const FilesUpload = ({ id = "pdf-input", maxFileSize }) => {
 
       <div className="flex items-start gap-8 flex-wrap h-full overflow-auto p-4">
         {pdfs.map((pdf, idx) => (
-          <div
-            key={idx}
-            className="relative border-gray-200 border-2 rounded-sm"
-          >
-            <iframe
-              src={URL.createObjectURL(pdf)}
-              title={`PDF Viewer ${idx}`}
-              className="w-full h-96"
-            />
-            <div className="text-gray-800 text-sm font-medium">
-              <div>{pdf.name}</div>
-              <div className="text-violet-500 font-semibold">
-                {(pdf.size / 1024).toFixed(2)} KB
-              </div>
-            </div>
-            <button
-              className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 bg-pink-500 text-white rounded-full p-1 w-6 h-6 text-sm flex justify-center items-center hover:bg-pink-600 transition"
-              onClick={() => removePdf(idx)}
+          <>
+            {console.log("iusyfcnwnf",URL.createObjectURL(pdf))}
+            <div
+              key={idx}
+              className="relative border-gray-200 border-2 rounded-sm"
             >
-              x
-            </button>
-          </div>
+              <iframe
+                src={URL.createObjectURL(pdf)}
+                title={`PDF Viewer ${idx}`}
+                className="w-full h-96"
+              />
+              <div className="text-gray-800 text-sm font-medium">
+                <div>{pdf.name}</div>
+                <div className="text-violet-500 font-semibold">
+                  {(pdf.size / 1024).toFixed(2)} KB
+                </div>
+              </div>
+              <button
+                className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 bg-pink-500 text-white rounded-full p-1 w-6 h-6 text-sm flex justify-center items-center hover:bg-pink-600 transition"
+                onClick={() => removePdf(idx)}
+              >
+                x
+              </button>
+            </div>
+          </>
         ))}
       </div>
     </div>
